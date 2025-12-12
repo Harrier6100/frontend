@@ -6,7 +6,7 @@
     <form @submit.prevent="onSubmit" autocomplete="off">
         <div>
             <Label>{{ t('LABEL.LOCALES.ID') }}</Label>
-            <Input v-model="form.id" />
+            <Input v-model="form.id" @input="toUpperCase" />
             <Message :error="errors.id" />
         </div>
         <div>
@@ -85,6 +85,10 @@ onMounted(async () => {
         stopLoading();
     }
 });
+
+const toUpperCase = () => {
+    form.value.id = form.value.id.toUpperCase();
+};
 
 const onSubmit = async () => {
     const ok = await run(schema, form.value);

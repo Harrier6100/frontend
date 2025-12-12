@@ -5,12 +5,12 @@ import { usePagination } from './usePagination';
 export const useDataTable = (tableData, pageSize = 10) => {
     const { keyword, filteredData } = useFilter(tableData);
     const { sortedData, sortBy, orderBy } = useSort(filteredData);
-    const { page, pageLen, paginatedData } = usePagination(sortedData, pageSize);
+    const { page, pageCount, paginatedData } = usePagination(sortedData, pageSize);
 
     return {
         keyword,
         page,
-        pageLen,
+        pageCount,
         filteredData,
         sortedData,
         paginatedData,

@@ -3,7 +3,7 @@ import { ref, computed } from 'vue';
 export const usePagination = (paginationData, pageSize) => {
     const page = ref(1);
 
-    const pageLen = computed(() => {
+    const pageCount = computed(() => {
         return Math.ceil(paginationData.value.length / pageSize);
     });
 
@@ -15,7 +15,7 @@ export const usePagination = (paginationData, pageSize) => {
 
     return {
         page,
-        pageLen,
+        pageCount,
         paginatedData,
     };
 };

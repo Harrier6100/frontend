@@ -14,6 +14,8 @@ const i18n = createI18n({
     locale: localStorage.getItem('locale') ?? 'ja',
     messages,
     missing: (locale, key) => key,
+    fallbackWarn: false,
+    fallbackLocale: false,
 });
 
 export default i18n;

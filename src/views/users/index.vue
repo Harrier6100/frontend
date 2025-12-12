@@ -31,7 +31,7 @@
     </table>
     <Pagination
         v-model:page="page"
-        :pageLen="pageLen"
+        :pageCount="pageCount"
     />
 </template>
 
@@ -59,7 +59,7 @@ const { addToast } = useToast();
 const { setQuery } = useQuery();
 
 const users = ref([]);
-const { keyword, page, pageLen, paginatedData, sortBy, orderBy } = useDataTable(users);
+const { keyword, page, pageCount, paginatedData, sortBy, orderBy } = useDataTable(users);
 
 onMounted(async () => {
     try {

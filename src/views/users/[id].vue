@@ -22,7 +22,7 @@
             </div>
         </div>
         <div v-if="form.role === 'user'">
-            <Button @click="modals.permission.open">{{ t('BUTTON.PERMISSION_MODAL') }}</Button>
+            <Button @click="modals.permission.open">{{ t('BUTTON.PERMISSION') }}</Button>
         </div>
         <div v-if="form.role === 'guest'">
             <Label>{{ t('LABEL.USERS.EXPIRY_DATE') }}</Label>
@@ -88,9 +88,9 @@ const schema = yup.object({
 });
 
 const roles = [
-    { value: 'admin', label: t('LABEL.USERS.ROLE-ADMIN') },
-    { value: 'user', label: t('LABEL.USERS.ROLE-USER') },
-    { value: 'guest', label: t('LABEL.USERS.ROLE-GUEST') },
+    { value: 'admin', label: t('LABEL.USERS.ROLE_ADMIN') },
+    { value: 'user', label: t('LABEL.USERS.ROLE_USER') },
+    { value: 'guest', label: t('LABEL.USERS.ROLE_GUEST') },
 ];
 
 watch(() => form.value.role, () => {

@@ -6,14 +6,14 @@ import { usePagination } from './usePaginationQuery';
 export const useDataTableQuery = (tableData, pageSize = 10) => {
     const { keyword, filteredData } = useFilter(tableData);
     const { sortedData, sortBy, orderBy } = useSort(filteredData);
-    const { page, pageLen, paginatedData } = usePagination(sortedData, pageSize);
+    const { page, pageCount, paginatedData } = usePagination(sortedData, pageSize);
 
     watch(keyword, () => page.value = 1);
 
     return {
         keyword,
         page,
-        pageLen,
+        pageCount,
         filteredData,
         sortedData,
         paginatedData,

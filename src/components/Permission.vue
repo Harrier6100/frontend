@@ -5,10 +5,10 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>{{ t('LABEL.PERMISSION_READ') }}</th>
-                        <th>{{ t('LABEL.PERMISSION_CREATE') }}</th>
-                        <th>{{ t('LABEL.PERMISSION_UPDATE') }}</th>
-                        <th>{{ t('LABEL.PERMISSION_DELETE') }}</th>
+                        <th>{{ t('LABEL.READ') }}</th>
+                        <th>{{ t('LABEL.CREATE') }}</th>
+                        <th>{{ t('LABEL.UPDATE') }}</th>
+                        <th>{{ t('LABEL.DELETE') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,7 +42,7 @@ const emit = defineEmits(['save', 'close']);
 
 const { t } = useI18n();
 const permissions = ref([]);
-const actions = ['Read', 'Create', 'Update', 'Delete'];
+const actions = ['read', 'create', 'update', 'delete'];
 
 watch(() => props.modelValue, (value) => {
     if (Array.isArray(value)) permissions.value = [...value];
