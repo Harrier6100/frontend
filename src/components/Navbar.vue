@@ -1,0 +1,4 @@
+<template>
+    <Locale />
+    <Auth />
+</template>
