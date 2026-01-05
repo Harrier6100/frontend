@@ -1,7 +1,7 @@
 import { api } from '@/api';
 
 export const userService = {
-    getAll: async () => {
+    fetch: async () => {
         const response = await api.get('/api/users');
         return response.data;
     },

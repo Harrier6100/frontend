@@ -55,7 +55,7 @@ const { addToast } = useToast();
 const { getQuery } = useQuery();
 const { errors, setLabel, run } = useYup();
 
-const id = ref(route.params.id);
+const { id } = route.params;
 const formRestore = () => ({
     id: '',
     locales: {
@@ -70,13 +70,13 @@ const schema = yup.object({
 });
 
 onMounted(async () => {
-    if (!id.value) return;
+    if (!id) return;
 
     try {
         startLoading();
         await execute(async () => {
-            const data = await localeService.get(id.value);
-            form.value = data;
+            const data = await localeService.get(id);
+            form.value = Object.assign(form.value, data);
         });
     } catch (error) {
         const { message } = errorHandler(error);
@@ -97,7 +97,7 @@ const onSubmit = async () => {
     try {
         startLoading();
         await execute(async () => {
-            if (id.value) await localeService.update(id.value, form.value);
+            if (id) await localeService.update(id, form.value);
             else await localeService.create(form.value);
             addToast(t('MESSAGE.SAVE'), 'success');
         });

@@ -65,7 +65,7 @@ onMounted(async () => {
     try {
         startLoading();
         await execute(async () => {
-            users.value = await userService.getAll();
+            users.value = await userService.fetch();
         });
     } catch (error) {
         const { message } = errorHandler(error);
@@ -97,7 +97,7 @@ const deleteUser = async (id) => {
         startLoading();
         await execute(async () => {
             const data = await userService.delete(id);
-            users.value = await userService.getAll();
+            users.value = await userService.fetch();
         });
         addToast('MESSAGE.DELETE', 'success');
     } catch (error) {

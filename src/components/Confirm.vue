@@ -10,7 +10,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
-import { useConfirm } from '@/composables/useConfirm';
+import { useConfirm } from '@/composables/state';
 
 const { t } = useI18n();
 const { isOpen, confirmMessage, confirmYes, confirmNo } = useConfirm();

@@ -71,7 +71,7 @@ const modals = reactive({
 });
 const { errors, setLabel, run } = useYup();
 
-const id = ref(route.params.id);
+const { id } = route.params;
 const formRestore = () => ({
     id: '',
     name: '',
@@ -93,18 +93,20 @@ const roles = [
     { value: 'guest', label: t('LABEL.USERS.ROLE_GUEST') },
 ];
 
-watch(() => form.value.role, () => {
-    form.value.expiryDate = '';
+watch(() => form.value.role, (value) => {
+    if (value !== 'guest') {
+        form.value.expiryDate = '';
+    }
 });
 
 onMounted(async () => {
-    if (!id.value) return;
+    if (!id) return;
 
     try {
         startLoading();
         await execute(async () => {
-            const data = await userService.get(id.value);
-            form.value = data;
+            const data = await userService.get(id);
+            form.value = Object.assign(form.value, data);
         });
     } catch (error) {
         const { message } = errorHandler(error);
@@ -121,7 +123,7 @@ const onSave = async () => {
     try {
         startLoading();
         await execute(async () => {
-            if (id.value) await userService.update(id.value, form.value);
+            if (id) await userService.update(id, form.value);
             else await userService.create(form.value);
             addToast(t('MESSAGE.SAVE'), 'success');
         });

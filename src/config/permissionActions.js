@@ -2,19 +2,19 @@ export const permissionActions = {
     'users': {
         label: 'MENU.USERS',
         actions: {
-            Read: 'users:r',
-            Create: 'users:c',
-            Update: 'users:u',
-            Delete: 'users:d',
+            read: 'users:r',
+            create: 'users:c',
+            update: 'users:u',
+            delete: 'users:d',
         },
     },
     'locales': {
         label: 'MENU.LOCALES',
         actions: {
-            Read: 'locales:r',
-            Create: 'locales:c',
-            Update: 'locales:u',
-            Delete: 'locales:d',
+            read: 'locales:r',
+            create: 'locales:c',
+            update: 'locales:u',
+            delete: 'locales:d',
         },
     },
 };

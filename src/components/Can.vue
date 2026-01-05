@@ -4,7 +4,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useUser } from '@/composables/useUser';
+import { useUser } from '@/composables/auth';
 
 const props = defineProps({
     roles: [String, Array],

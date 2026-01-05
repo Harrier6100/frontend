@@ -28,7 +28,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useUser } from '@/composables/useUser';
+import { useUser } from '@/composables/auth';
 import { menuItems } from '@/menu';
 
 const props = defineProps({

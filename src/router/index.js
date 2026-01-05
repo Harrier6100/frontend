@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { useAuth } from '@/composables/useAuth';
-import { useUser } from '@/composables/useUser';
+import { useAuth, useUser } from '@/composables/auth';
 import { menuItems } from '@/menu';
 import routeDefs from './routes';
 

@@ -2,18 +2,18 @@ import { reactive } from 'vue';
 
 export const useModal = () => {
     const state = reactive({
-        isOpen: false,
         payload: null,
+        isOpen: false,
     });
 
     const open = (payload = null) => {
-        state.isOpen = true;
         state.payload = payload;
+        state.isOpen = true;
     };
 
     const close = () => {
-        state.isOpen = false;
         state.payload = null;
+        state.isOpen = false;
     };
 
     return {

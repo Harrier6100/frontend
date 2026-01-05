@@ -1,30 +1,35 @@
 <template>
-    <h3>{{ t('MENU.LOCALES') }}</h3>
+    <h3>{{ t('MENU.SPECS') }}</h3>
     <Input v-model="keyword" />
-    <Button v-can="{ permissions: 'locales:c' }" @click="createLocale">{{ t('BUTTON.CREATE_NEW') }}</Button>
+    <Button v-can="{ permissions: 'specs:c' }" @click="createSpec">{{ t('BUTTON.CREATE_NEW') }}</Button>
     <table>
         <thead>
             <tr>
-                <Th>{{ t('LABEL.LOCALES.ID') }}</Th>
-                <Th>{{ t('LABEL.LOCALES.LOCALES') }}</Th>
+                <Th>{{ t('LABEL.SPECS.MATERIAL_ID') }}</Th>
+                <Th>{{ t('LABEL.SPECS.MATERIAL_NAME') }}</Th>
+                <Th>{{ t('LABEL.SPECS.SUPPLIER_ID') }}</Th>
+                <Th>{{ t('LABEL.SPECS.SUPPLIER_NAME') }}</Th>
+                <Th>{{ t('LABEL.IS_ACTIVE') }}</Th>
                 <Th>{{ t('LABEL.CREATED_AT') }}</Th>
                 <Th>{{ t('LABEL.CREATED_BY') }}</Th>
                 <Th>{{ t('LABEL.UPDATED_AT') }}</Th>
                 <Th>{{ t('LABEL.UPDATED_BY') }}</Th>
-                <Th>{{ t('LABEL.ACTIONS') }}</Th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="locale in paginatedData" :key="locale.id">
-                <Td>{{ locale.id }}</Td>
-                <Td>{{ locale.locales?.[lang] }}</Td>
-                <Td>{{ getDateTime(locale.createdAt) }}</Td>
-                <Td>{{ locale.createdBy }}</Td>
-                <Td>{{ getDateTime(locale.updatedAt) }}</Td>
-                <Td>{{ locale.updatedBy }}</Td>
+            <tr v-for="spec in paginatedData" :key="spec.id">
+                <Td>{{ spec.materialId }}</Td>
+                <Td>{{ spec.materialName }}</Td>
+                <Td>{{ spec.supplierId }}</Td>
+                <Td>{{ spec.supplierName }}</Td>
+                <Td>{{ spec.isActive ? t('LABEL.IS_ACTIVE_TRUE') : t('LABEL.IS_ACTIVE_FALSE') }}</Td>
+                <Td>{{ getDateTime(spec.createdAt) }}</Td>
+                <Td>{{ spec.createdBy }}</Td>
+                <Td>{{ getDateTime(spec.updatedAt) }}</Td>
+                <Td>{{ spec.updatedBy }}</Td>
                 <Td>
-                    <Button v-can="{ permissions: 'locales:u' }" @click="updateLocale(locale.id)">{{ t('BUTTON.EDIT') }}</Button>
-                    <Button v-can="{ permissions: 'locales:d' }" @click="deleteLocale(locale.id)">{{ t('BUTTON.DELETE') }}</Button>
+                    <Button @click="updateSpec(spec.id)">{{ t('BUTTON.EDIT') }}</Button>
+                    <Button @click="deleteSpec(spec.id)">{{ t('BUTTON.DELETE') }}</Button>
                 </Td>
             </tr>
         </tbody>
@@ -47,9 +52,9 @@ import { useQuery } from '@/composables/useQuery';
 import { useDataTable } from '@/composables/useDataTableQuery';
 import { errorHandler } from '@/utils/errorHandler';
 import { getDateTime } from '@/utils/formatDateTime';
-import { localeService } from '@/services/localeService';
+import { specService } from '@/services/specService';
 
-const { t, locale: lang } = useI18n();
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const { isLoading, startLoading, stopLoading } = useLoading();
@@ -58,14 +63,14 @@ const { confirm } = useConfirm();
 const { addToast } = useToast();
 const { setQuery } = useQuery();
 
-const locales = ref([]);
-const { keyword, page, pageCount, paginatedData, sortBy, orderBy } = useDataTable(locales);
+const specs = ref([]);
+const { keyword, page, pageCount, paginatedData, sortBy, orderBy } = useDataTable(specs);
 
 onMounted(async () => {
     try {
         startLoading();
         await execute(async () => {
-            locales.value = await localeService.fetch();
+            specs.value = await specService.fetch();
         });
     } catch (error) {
         const { message } = errorHandler(error);
@@ -75,29 +80,29 @@ onMounted(async () => {
     }
 });
 
-const createLocale = () => {
+const createSpec = () => {
     setQuery(route.query);
     router.push({
-        name: 'Locales[new]',
+        name: 'Specs[new]',
     });
 };
 
-const updateLocale = (id) => {
+const updateSpec = (id) => {
     setQuery(route.query);
     router.push({
-        name: 'Locales[id]',
+        name: 'Specs[id]',
         params: { id },
     });
 };
 
-const deleteLocale = async (id) => {
+const deleteSpec = async (id) => {
     if (!await confirm(t('CONFIRM.DELETE'))) return;
 
     try {
         startLoading();
         await execute(async () => {
-            await localeService.delete(id)
-            locales.value = await localeService.fetch();
+            const data = await specService.delete(id);
+            specs.value = await specService.fetch();
         });
         addToast('MESSAGE.DELETE', 'success');
     } catch (error) {

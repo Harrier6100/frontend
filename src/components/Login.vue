@@ -24,11 +24,11 @@
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import * as yup from 'yup';
-import { useAuth } from '@/composables/useAuth';
-import { useLoading } from '@/composables/useLoading';
-import { useSpinning } from '@/composables/useSpinning';
-import { useYup } from '@/composables/useYup';
-import { errorHandler } from '@/utils/errorHandler';
+import { useAuth } from '@/composables/auth';
+import { useLoading } from '@/composables/state';
+import { useSpinning } from '@/composables/ui';
+import { useYup } from '@/composables/validation';
+import { errorHandler } from '@/utils';
 
 const props = defineProps({
     isOpen: Boolean,

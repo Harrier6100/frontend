@@ -22,18 +22,17 @@
 import { reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
-import { useAuth } from '@/composables/useAuth';
-import { useUser } from '@/composables/useUser';
-import { useConfirm } from '@/composables/useConfirm';
-import { useToggle } from '@/composables/useToggle';
-import { useModal } from '@/composables/useModal';
+import { useAuth, useUser } from '@/composables/auth';
+import { useToggle } from '@/composables/core';
+import { useConfirm } from '@/composables/state';
+import { useModal } from '@/composables/ui';
 
 const { t } = useI18n();
 const router = useRouter();
 const { isAuth, logout } = useAuth();
 const { name } = useUser();
-const { confirm } = useConfirm();
 const sidebar = useToggle();
+const { confirm } = useConfirm();
 const modals = reactive({
     login: useModal(),
 });
