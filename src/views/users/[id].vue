@@ -1,9 +1,6 @@
 <template>
-    <h3>
-        <span v-if="id">{{ t('MENU.USERS_ID') }}</span>
-        <span v-if="!id">{{ t('MENU.USERS_NEW') }}</span>
-    </h3>
-    <form @submit.prevent="onSave" autocomplete="off">
+    <h3>{{ id ? t('MENU.USERS_ID') : t('MENU.USERS_NEW') }}</h3>
+    <Form @submit.prevent="onSave">
         <div>
             <Label>{{ t('LABEL.USERS.ID') }}</Label>
             <Input v-model="form.id" />
@@ -33,10 +30,11 @@
             <Textarea v-model="form.remarks"></Textarea>
         </div>
         <Button type="submit" :disabled="isLoading">
-            <span v-if="isSpinning">...</span>{{ t('BUTTON.SAVE') }}
+            <span v-if="isSpinning">...</span>
+            {{ t('BUTTON.SAVE') }}
         </Button>
         <Button @click="onBack">{{ t('BUTTON.BACK') }}</Button>
-    </form>
+    </Form>
     <Permission
         :isOpen="modals.permission.state.isOpen"
         :modelValue="form.permissions"
@@ -50,26 +48,35 @@ import { ref, reactive, onMounted, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import * as yup from 'yup';
-import { useLoading } from '@/composables/useLoading';
-import { useSpinning } from '@/composables/useSpinning';
-import { useToast } from '@/composables/useToast';
-import { useQuery } from '@/composables/useQuery';
-import { useModal } from '@/composables/useModal';
+import { useLoading, useQuery, useToast } from '@/composables/state';
+import { useModal, useSpinning } from '@/composables/ui';
 import { useYup } from '@/composables/useYup';
-import { errorHandler } from '@/utils/errorHandler';
-import { userService } from '@/services/userService';
+import { errorHandler } from '@/utils';
+import { userService } from '@/services';
 
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const { isLoading, startLoading, stopLoading } = useLoading();
-const { isSpinning, execute } = useSpinning();
-const { addToast } = useToast();
 const { getQuery } = useQuery();
+const { addToast } = useToast();
+const { isSpinning, execute } = useSpinning();
+const { errors, setLabel, run } = useYup();
+
 const modals = reactive({
     permission: useModal(),
 });
-const { errors, setLabel, run } = useYup();
+
+const schema = yup.object({
+    id: setLabel('LABEL.USERS.ID', yup.string().required()),
+    name: setLabel('LABEL.USERS.NAME', yup.string().required()),
+});
+
+const roles = [
+    { value: 'admin', label: t('LABEL.USERS.ROLE_ADMIN') },
+    { value: 'user', label: t('LABEL.USERS.ROLE_USER') },
+    { value: 'guest', label: t('LABEL.USERS.ROLE_GUEST') },
+];
 
 const { id } = route.params;
 const formRestore = () => ({
@@ -82,16 +89,6 @@ const formRestore = () => ({
     isActive: true,
 });
 const form = ref(formRestore());
-const schema = yup.object({
-    id: setLabel('LABEL.USERS.ID', yup.string().required()),
-    name: setLabel('LABEL.USERS.NAME', yup.string().required()),
-});
-
-const roles = [
-    { value: 'admin', label: t('LABEL.USERS.ROLE_ADMIN') },
-    { value: 'user', label: t('LABEL.USERS.ROLE_USER') },
-    { value: 'guest', label: t('LABEL.USERS.ROLE_GUEST') },
-];
 
 watch(() => form.value.role, (value) => {
     if (value !== 'guest') {

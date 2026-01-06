@@ -7,10 +7,10 @@
                     <Label>{{ t('LABEL.SPECS.PROPERTY_ID') }}</Label>
                     <PropertyIdInput
                         v-model="spec.propertyId"
-                        @change="spec.propertyName = $event?.name ?? ''"
-                        @error=""
-                        @errorMessage=""
+                        @change="(property) => spec.propertyName = property?.name ?? ''"
+                        @error="({ message }) => errors.propertyId = message"
                     />
+                    <Message :error="errors.propertyId" />
                 </div>
                 <div>
                     <Label>{{ t('LABEL.SPECS.PROPERTY_NAME') }}</Label>
@@ -18,7 +18,11 @@
                 </div>
                 <div>
                     <Label>{{ t('LABEL.SPECS.PROPERTY_ID_NEW') }}</Label>
-                    <PropertyIdInput v-model="spec.propertyIdNew" />
+                    <PropertyIdInput
+                        v-model="spec.propertyIdNew"
+                        @error="({ message }) => errors.propertyIdNew = message"
+                    />
+                    <Message :error="errors.propertyIdNew" />
                 </div>
                 <div>
                     <Label>{{ t('LABEL.SPECS.SPEC') }}</Label>
@@ -31,6 +35,7 @@
                 <div>
                     <Label>{{ t('LABEL.SPECS.SPEC_TYPE') }}</Label>
                     <Select v-model="spec.specType">
+                        <option value="">-</option>
                         <option value="00000">00000</option>
                         <option value="01000">01000</option>
                         <option value="00100">00100</option>
@@ -88,6 +93,8 @@ const emit = defineEmits(['save','close']);
 
 const { t } = useI18n();
 const spec = ref({});
+const errors = ref({});
+const isError = ref(false);
 
 watch(() => props.modelValue, (value) => {
     spec.value = {

@@ -39,27 +39,23 @@
 import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
-import { useLoading } from '@/composables/useLoading';
-import { useSpinning } from '@/composables/useSpinning';
-import { useConfirm } from '@/composables/useConfirm';
-import { useToast } from '@/composables/useToast';
-import { useQuery } from '@/composables/useQuery';
-import { useDataTable } from '@/composables/useDataTableQuery';
-import { errorHandler } from '@/utils/errorHandler';
-import { getDateTime } from '@/utils/formatDateTime';
-import { userService } from '@/services/userService';
+import { useDataTableQuery } from '@/composables/data';
+import { useConfirm, useLoading, useQuery, useToast } from '@/composables/state';
+import { useSpinning } from '@/composables/ui';
+import { errorHandler, getDateTime } from '@/utils';
+import { userService } from '@/services';
 
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const { isLoading, startLoading, stopLoading } = useLoading();
-const { isSpinning, execute } = useSpinning();
 const { confirm } = useConfirm();
-const { addToast } = useToast();
+const { isLoading, startLoading, stopLoading } = useLoading();
 const { setQuery } = useQuery();
+const { addToast } = useToast();
+const { isSpinning, execute } = useSpinning();
 
 const users = ref([]);
-const { keyword, page, pageCount, paginatedData, sortBy, orderBy } = useDataTable(users);
+const { keyword, page, pageCount, paginatedData, sortBy, orderBy } = useDataTableQuery(users);
 
 onMounted(async () => {
     try {
@@ -96,7 +92,7 @@ const deleteUser = async (id) => {
     try {
         startLoading();
         await execute(async () => {
-            const data = await userService.delete(id);
+            await userService.delete(id);
             users.value = await userService.fetch();
         });
         addToast('MESSAGE.DELETE', 'success');

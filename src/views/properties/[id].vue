@@ -3,7 +3,7 @@
     <Form @submit.prevent="onSave">
         <div>
             <Label>{{ t('LABEL.PROPERTIES.ID') }}</Label>
-            <Input v-model="form.id" @input="toUpperCase" />
+            <Input v-model="form.id" @input="form.id = form.id.toUpperCase()" />
             <Message :error="errors.id" />
         </div>
         <div>
@@ -11,7 +11,14 @@
             <Input v-model="form.name" />
             <Message :error="errors.name" />
         </div>
-        <Button type="submit">{{ t('BUTTON.SAVE') }}</Button>
+        <div>
+            <Label>{{ t('LABEL.PROPERTIES.UOM') }}</Label>
+            <Input v-model="form.uom" />
+        </div>
+        <Button type="submit">
+            <span v-if="isSpinning">...</span>
+            {{ t('BUTTON.SAVE') }}
+        </Button>
         <Button @click="onBack">{{ t('BUTTON.BACK') }}</Button>
     </Form>
 </template>
@@ -21,31 +28,33 @@ import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import * as yup from 'yup';
-import { useQuery, useLoading, useToast } from '@/composables/state';
+import { useLoading, useQuery, useToast } from '@/composables/state';
 import { useSpinning } from '@/composables/ui';
-import { useYup } from '@/composables/validation';
+import { useYup } from '@/composables/useYup';
 import { errorHandler } from '@/utils';
 import { propertyService } from '@/services';
 
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const { getQuery } = useQuery();
 const { isLoading, startLoading, stopLoading } = useLoading();
+const { getQuery } = useQuery();
 const { addToast } = useToast();
 const { isSpinning, execute } = useSpinning();
 const { errors, setLabel, run } = useYup();
+
+const schema = yup.object({
+    id: setLabel('LABEL.PROPERTIES.ID', yup.string().required()),
+    name: setLabel('LABEL.PROPERTIES.NAME', yup.string().required()),
+});
 
 const { id } = route.params;
 const formRestore = () => ({
     id: '',
     name: '',
+    uom: '',
 });
 const form = ref(formRestore());
-const schema = yup.object({
-    id: setLabel('LABEL.PROPERTIES.ID', yup.string().required()),
-    name: setLabel('LABEL.PROPERTIES.NAME', yup.string().required()),
-});
 
 onMounted(async () => {
     if (!id) return;
@@ -63,10 +72,6 @@ onMounted(async () => {
         stopLoading();
     }
 });
-
-const toUpperCase = () => {
-    form.value.id = form.value.id.toUpperCase();
-};
 
 const onSave = async () => {
     const ok = await run(schema, form.value);

@@ -1,8 +1,5 @@
 <template>
-    <h3>
-        <span v-if="id">{{ t('MENU.SPECS_ID') }}</span>
-        <span v-if="!id">{{ t('MENU.SPECS_NEW') }}</span>
-    </h3>
+    <h3>{{ id ? t('MENU.SPECS_ID') : t('MENU.SPECS_NEW') }}</h3>
     <Form @submit.prevent="onSave">
         <div>
             <Label>{{ t('LABEL.SPECS.MATERIAL_ID') }}</Label>
@@ -63,7 +60,10 @@
         <div>
             <Textarea v-model="form.remarks" />
         </div>
-        <Button type="submit">{{ t('BUTTON.SAVE') }}</Button>
+        <Button type="submit">
+            <span v-if="isSpinning">...</span>
+            {{ t('BUTTON.SAVE') }}
+        </Button>
         <Button @click="onBack">{{ t('BUTTON.BACK') }}</Button>
     </Form>
     <Spec
@@ -81,23 +81,29 @@ import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import * as yup from 'yup';
 import { useArray } from '@/composables/core';
-import { useQuery, useLoading, useToast } from '@/composables/state';
-import { useSpinning, useModal } from '@/composables/ui';
-import { useYup } from '@/composables/validation';
+import { useLoading, useQuery, useToast } from '@/composables/state';
+import { useModal, useSpinning } from '@/composables/ui';
+import { useYup } from '@/composables/useYup';
 import { errorHandler } from '@/utils';
 import { specService } from '@/services';
 
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const { getQuery } = useQuery();
 const { isLoading, stopLoading, startLoading } = useLoading();
+const { getQuery } = useQuery();
 const { addToast } = useToast();
 const { isSpinning, execute } = useSpinning();
+const { errors, setLabel, run } = useYup();
+
 const modals = reactive({
     spec: useModal(),
 });
-const { errors, setLabel, run } = useYup();
+
+const schema = yup.object({
+    materialId: setLabel('LABEL.SPECS.MATERIAL_ID', yup.string().required()),
+    supplierId: setLabel('LABEL.SPECS.SUPPLIER_ID', yup.string().required()),
+});
 
 const { id } = route.params;
 const specs = useArray();
@@ -121,10 +127,6 @@ const formRestore = () => ({
     remarks: '',
 });
 const form = ref(formRestore());
-const schema = yup.object({
-    materialId: setLabel('LABEL.SPECS.MATERIAL_ID', yup.string().required()),
-    supplierId: setLabel('LABEL.SPECS.SUPPLIER_ID', yup.string().required()),
-});
 
 onMounted(async () => {
     if (!id) return;

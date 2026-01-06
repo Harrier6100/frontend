@@ -39,27 +39,23 @@
 import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
-import { useLoading } from '@/composables/useLoading';
-import { useSpinning } from '@/composables/useSpinning';
-import { useConfirm } from '@/composables/useConfirm';
-import { useToast } from '@/composables/useToast';
-import { useQuery } from '@/composables/useQuery';
-import { useDataTable } from '@/composables/useDataTableQuery';
-import { errorHandler } from '@/utils/errorHandler';
-import { getDateTime } from '@/utils/formatDateTime';
-import { localeService } from '@/services/localeService';
+import { useDataTableQuery } from '@/composables/data';
+import { useConfirm, useLoading, useQuery, useToast } from '@/composables/state';
+import { useSpinning } from '@/composables/ui';
+import { errorHandler, getDateTime } from '@/utils';
+import { localeService } from '@/services';
 
 const { t, locale: lang } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const { isLoading, startLoading, stopLoading } = useLoading();
-const { isSpinning, execute } = useSpinning();
 const { confirm } = useConfirm();
-const { addToast } = useToast();
+const { isLoading, startLoading, stopLoading } = useLoading();
 const { setQuery } = useQuery();
+const { addToast } = useToast();
+const { isSpinning, execute } = useSpinning();
 
 const locales = ref([]);
-const { keyword, page, pageCount, paginatedData, sortBy, orderBy } = useDataTable(locales);
+const { keyword, page, pageCount, paginatedData, sortBy, orderBy } = useDataTableQuery(locales);
 
 onMounted(async () => {
     try {

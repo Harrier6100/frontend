@@ -27,7 +27,7 @@ import * as yup from 'yup';
 import { useAuth } from '@/composables/auth';
 import { useLoading } from '@/composables/state';
 import { useSpinning } from '@/composables/ui';
-import { useYup } from '@/composables/validation';
+import { useYup } from '@/composables/useYup';
 import { errorHandler } from '@/utils';
 
 const props = defineProps({
@@ -41,15 +41,16 @@ const { isLoading, startLoading, stopLoading } = useLoading();
 const { isSpinning, execute } = useSpinning();
 const { errors, setLabel, run } = useYup();
 
+const schema = yup.object({
+    id: setLabel('LABEL.LOGIN.ID', yup.string().required()),
+    password: setLabel('LABEL.LOGIN.PASSWORD', yup.string().required()),
+});
+
 const formRestore = () => ({
     id: '',
     password: '',
 });
 const form = ref(formRestore());
-const schema = yup.object({
-    id: setLabel('LABEL.LOGIN.ID', yup.string().required()),
-    password: setLabel('LABEL.LOGIN.PASSWORD', yup.string().required()),
-});
 
 const onLogin = async () => {
     const ok = await run(schema, form.value);

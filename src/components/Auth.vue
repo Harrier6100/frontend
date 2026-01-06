@@ -33,6 +33,7 @@ const { isAuth, logout } = useAuth();
 const { name } = useUser();
 const sidebar = useToggle();
 const { confirm } = useConfirm();
+
 const modals = reactive({
     login: useModal(),
 });

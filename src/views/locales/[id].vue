@@ -1,12 +1,9 @@
 <template>
-    <h3>
-        <span v-if="id">{{ t('MENU.LOCALES_ID') }}</span>
-        <span v-if="!id">{{ t('MENU.LOCALES_NEW') }}</span>
-    </h3>
-    <form @submit.prevent="onSubmit" autocomplete="off">
+    <h3>{{ id ? t('MENU.LOCALES_ID') : t('MENU.LOCALES_NEW')}}</h3>
+    <Form @submit.prevent="onSave">
         <div>
             <Label>{{ t('LABEL.LOCALES.ID') }}</Label>
-            <Input v-model="form.id" @input="toUpperCase" />
+            <Input v-model="form.id" @input="form.id = form.id.toUpperCase()" />
             <Message :error="errors.id" />
         </div>
         <div>
@@ -27,10 +24,11 @@
             </div>
         </div>
         <Button type="submit" :disabled="isLoading">
-            <span v-if="isSpinning">...</span>{{ t('BUTTON.SAVE') }}
+            <span v-if="isSpinning">...</span>
+            {{ t('BUTTON.SAVE') }}
         </Button>
         <Button @click="onBack">{{ t('BUTTON.BACK') }}</Button>
-    </form>
+    </Form>
 </template>
 
 <script setup>
@@ -38,22 +36,24 @@ import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import * as yup from 'yup';
-import { useLoading } from '@/composables/useLoading';
-import { useSpinning } from '@/composables/useSpinning';
-import { useToast } from '@/composables/useToast';
-import { useQuery } from '@/composables/useQuery';
+import { useLoading, useQuery, useToast } from '@/composables/state';
+import { useSpinning } from '@/composables/ui';
 import { useYup } from '@/composables/useYup';
-import { errorHandler } from '@/utils/errorHandler';
-import { localeService } from '@/services/localeService';
+import { errorHandler } from '@/utils';
+import { localeService } from '@/services';
 
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const { isLoading, startLoading, stopLoading } = useLoading();
-const { isSpinning, execute } = useSpinning();
-const { addToast } = useToast();
 const { getQuery } = useQuery();
+const { addToast } = useToast();
+const { isSpinning, execute } = useSpinning();
 const { errors, setLabel, run } = useYup();
+
+const schema = yup.object({
+    id: setLabel('LABEL.LOCALES.ID', yup.string().required()),
+});
 
 const { id } = route.params;
 const formRestore = () => ({
@@ -65,9 +65,6 @@ const formRestore = () => ({
     },
 });
 const form = ref(formRestore());
-const schema = yup.object({
-    id: setLabel('LABEL.LOCALES.ID', yup.string().required()),
-});
 
 onMounted(async () => {
     if (!id) return;
@@ -86,11 +83,7 @@ onMounted(async () => {
     }
 });
 
-const toUpperCase = () => {
-    form.value.id = form.value.id.toUpperCase();
-};
-
-const onSubmit = async () => {
+const onSave = async () => {
     const ok = await run(schema, form.value);
     if (!ok) return;
 
