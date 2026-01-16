@@ -1,0 +1,74 @@
+{
+  "BUTTON": {
+    "ADD": "追加",
+    "BACK": "戻る",
+    "CLOSE": "閉じる",
+    "CLOSE_MODAL": "x",
+    "CREATE_NEW": "新規作成",
+    "DELETE": "削除",
+    "DOWN": "↓",
+    "EDIT": "編集",
+    "LOGIN": "ログイン",
+    "LOGOUT": "ログアウト",
+    "NO": "いいえ",
+    "PUSH": "挿入",
+    "REMOVE": "削除",
+    "SAVE": "保存",
+    "SELECT": "選択",
+    "UP": "↑",
+    "YES": "はい"
+  },
+  "LABEL": {
+    "CREATED_AT": "作成日時",
+    "CREATED_BY": "作成者",
+    "IS_ACTIVE_FALSE": "無効",
+    "IS_ACTIVE_TRUE": "有効",
+    "LOCALES": {
+      "ID": "翻訳キー",
+      "LOCALES": "翻訳"
+    },
+    "PROPERTIES": {
+      "ID": "物性コード",
+      "NAME": "物性名"
+    },
+    "PROPERTY_SPECS": {
+      "IS_ACTIVE": "状態",
+      "IS_ACTIVE_FALSE": "無効",
+      "IS_ACTIVE_TRUE": "有効",
+      "IS_SPC": "傾向管理",
+      "IS_SPC_FALSE": "しない",
+      "IS_SPC_TRUE": "する",
+      "MATERIAL_ID": "品名コード",
+      "MATERIAL_NAME": "品名",
+      "PROPERTY_ID": "@:LABEL.PROPERTIES.ID",
+      "PROPERTY_NAME": "@:LABEL.PROPERTIES.NAME",
+      "SPEC": "規格",
+      "SPEC_TYPE": "規格タイプ",
+      "SPEC_VALUE": "規格値",
+      "SPEC_VALUE_MAX": "最大値",
+      "SPEC_VALUE_MIN": "最小値",
+      "SPEC_VALUE_NOMINAL": "基準値",
+      "SPEC_VALUE_TOLERANCE": "許容値",
+      "SUPPLIER_ID": "仕入先コード",
+      "SUPPLIER_NAME": "仕入先名",
+      "UOM": "単位"
+    },
+    "UPDATED_AT": "更新日時",
+    "UPDATED_BY": "更新者",
+    "USERS": {
+      "ID": "アカウント",
+      "NAME": "アカウント名"
+    }
+  },
+  "MENU": {
+    "LOCALES": "翻訳マスタ",
+    "USERS": "アカウントマスタ"
+  },
+  "MESSAGE": {
+    "CONFIRM_DELETE": "削除しますか？",
+    "CONFIRM_LOGOUT": "ログアウトしますか？"
+  },
+  "YUP": {
+    "REQUIRED": "{ label }は必須です。"
+  }
+}

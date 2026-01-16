@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('@/assets/fonts/NotoSansJP-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('@/assets/fonts/NotoSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Noto Sans JP', 'Noto Sans', sans-serif;
+}
