@@ -1,8 +1,8 @@
 import { api } from './api';
 
 export const permissionService = {
-    fetch: async () => {
-        const response = await api.get('/api/permissions');
+    fetch: async (params) => {
+        const response = await api.get('/api/permissions', { params });
         return response.data;
     },
     get: async (id) => {

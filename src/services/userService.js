@@ -1,8 +1,8 @@
 import { api } from './api';
 
 export const userService = {
-    fetch: async () => {
-        const response = await api.get('/api/users');
+    fetch: async (params) => {
+        const response = await api.get('/api/users', { params });
         return response.data;
     },
     get: async (id) => {

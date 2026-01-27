@@ -18,6 +18,7 @@
   "LABEL": {
     "CREATED_AT": "作成日時",
     "CREATED_BY": "作成者",
+    "FROM": "From",
     "IS_ACTIVE": "状態",
     "IS_ACTIVE_FALSE": "無効",
     "IS_ACTIVE_TRUE": "有効",
@@ -27,10 +28,26 @@
       "ID": "翻訳キー",
       "LOCALES": "翻訳"
     },
+    "MATERIAL_STOCKS": {
+      "BARCODE_LOT": "バーコードロット",
+      "CLAIM_NUMBER": "クレーム番号",
+      "MATERIAL_CODE": "原材料コード",
+      "MATERIAL_NAME": "原材料名",
+      "PURCHASE_NUMBER": "発注番号",
+      "RECEIVED_DATE": "受入日",
+      "REMARKS": "備考",
+      "STOCK_LENGTH": "長さ",
+      "STOCK_LOT": "ロット",
+      "STOCK_QTY": "在庫数量",
+      "STOCK_STATUS_CLASS": "出荷可否区分",
+      "STOCK_WIDTH": "幅",
+      "WAREHOUSE_CODE": "倉庫"
+    },
     "PERMISSIONS": {
       "ID": "権限",
       "NAME": "権限ラベル"
     },
+    "TO": "To",
     "UPDATED_AT": "変更日時",
     "UPDATED_BY": "変更者",
     "USERS": {

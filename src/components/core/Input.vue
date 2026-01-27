@@ -8,14 +8,12 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
     modelValue: String,
     placeholder: String,
 });
 
 const inputRef = ref(null);
 
-defineExpose({
-    inputRef
-});
+defineExpose({ inputRef });
 </script>

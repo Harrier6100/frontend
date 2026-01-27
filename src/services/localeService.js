@@ -1,8 +1,8 @@
 import { api } from './api';
 
 export const localeService = {
-    fetch: async () => {
-        const response = await api.get('/api/locales');
+    fetch: async (params) => {
+        const response = await api.get('/api/locales', { params });
         return response.data;
     },
     get: async (id) => {
