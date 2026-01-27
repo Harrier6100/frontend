@@ -1,0 +1,71 @@
+{
+  "BUTTON": {
+    "BACK": "戻る",
+    "CLOSE": "閉じる",
+    "CREATE_NEW": "新規作成",
+    "DELETE": "削除",
+    "EDIT": "編集",
+    "LOGIN": "ログイン",
+    "LOGOUT": "ログアウト",
+    "NO": "いいえ",
+    "SAVE": "保存",
+    "YES": "はい"
+  },
+  "CONFIRM": {
+    "DELETE": "削除しますか？",
+    "LOGOUT": "ログアウトしますか？"
+  },
+  "LABEL": {
+    "CREATED_AT": "作成日時",
+    "CREATED_BY": "作成者",
+    "IS_ACTIVE": "状態",
+    "IS_ACTIVE_FALSE": "無効",
+    "IS_ACTIVE_TRUE": "有効",
+    "LANGUAGE_EN": "英語",
+    "LANGUAGE_JA": "日本語",
+    "LOCALES": {
+      "ID": "翻訳キー",
+      "LOCALES": "翻訳"
+    },
+    "PERMISSIONS": {
+      "ID": "権限",
+      "NAME": "権限ラベル"
+    },
+    "UPDATED_AT": "変更日時",
+    "UPDATED_BY": "変更者",
+    "USERS": {
+      "EXPIRY_DATE": "有効期限",
+      "ID": "アカウント",
+      "LANGUAGE": "言語",
+      "NAME": "アカウント名",
+      "REMARKS": "備考",
+      "ROLE": "ロール",
+      "ROLE_ADMIN": "管理者",
+      "ROLE_GUEST": "ゲスト",
+      "ROLE_USER": "ユーザー"
+    }
+  },
+  "MENU": {
+    "ADMIN": "管理",
+    "HOME": "ホーム",
+    "LOCALES": "翻訳",
+    "LOCALES_ID": "@:{'MENU.LOCALES'}-編集",
+    "LOCALES_NEW": "@:{'MENU.LOCALES'}-新規作成",
+    "PERMISSIONS": "権限",
+    "USERS": "アカウント",
+    "USERS_ID": "@:{'MENU.USERS'}-編集",
+    "USERS_NEW": "@:{'MENU.USERS'}-新規作成"
+  },
+  "MESSAGE": {
+    "SAVE": "保存しました。"
+  },
+  "MODAL": {
+    "PERMISSION": "権限設定"
+  },
+  "PLACEHOLDER": {
+    "SEARCH": "検索"
+  },
+  "YUP": {
+    "REQUIRED": "{ label }は必須です。"
+  }
+}
