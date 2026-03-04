@@ -1,6 +1,7 @@
 {
   "BUTTON": {
     "BACK": "戻る",
+    "CLEAR": "初期化",
     "CLOSE": "閉じる",
     "CREATE_NEW": "新規作成",
     "DELETE": "削除",
@@ -9,6 +10,7 @@
     "LOGOUT": "ログアウト",
     "NO": "いいえ",
     "SAVE": "保存",
+    "SEARCH": "検索",
     "YES": "はい"
   },
   "CONFIRM": {
@@ -24,22 +26,25 @@
     "IS_ACTIVE_TRUE": "有効",
     "LANGUAGE_EN": "英語",
     "LANGUAGE_JA": "日本語",
+    "LENGTH": "長さ",
     "LOCALES": {
       "ID": "翻訳キー",
       "LOCALES": "翻訳"
     },
+    "MATERIAL_CODE": "原材料コード",
+    "MATERIAL_NAME": "原材料名",
     "MATERIAL_STOCKS": {
       "BARCODE_LOT": "バーコードロット",
       "CLAIM_NUMBER": "クレーム番号",
       "MATERIAL_CODE": "原材料コード",
       "MATERIAL_NAME": "原材料名",
-      "PURCHASE_NUMBER": "発注番号",
-      "RECEIVED_DATE": "受入日",
+      "PURCHASE_ID": "発注番号",
+      "RECEIVE_DATE": "受入日",
       "REMARKS": "備考",
       "STOCK_LENGTH": "長さ",
       "STOCK_LOT": "ロット",
       "STOCK_QTY": "在庫数量",
-      "STOCK_STATUS_CLASS": "出荷可否区分",
+      "STOCK_STATUS": "出荷可否区分",
       "STOCK_WIDTH": "幅",
       "WAREHOUSE_CODE": "倉庫"
     },
@@ -47,6 +52,25 @@
       "ID": "権限",
       "NAME": "権限ラベル"
     },
+    "PURCHASE_ORDERS": {
+      "DUE_DATE": "確定納期",
+      "IS_INACTIVE_DATA_INCLUDED": "無効なデータを検索結果に含む",
+      "MATERIAL_CODE": "@:{'LABEL.MATERIAL_CODE'}",
+      "MATERIAL_LENGTH": "@:{'LABEL.LENGTH'}",
+      "MATERIAL_NAME": "@:{'LABEL.MATERIAL_NAME'}",
+      "MATERIAL_VOLUME": "入り目",
+      "MATERIAL_WIDTH": "@:{'LABEL.WIDTH'}",
+      "OPEN_QTY": "残数量",
+      "ORDER_DATE": "発注日",
+      "ORDER_QTY": "発注個数",
+      "ORDER_QTY_UOM": "発注数量",
+      "PURCHASE_ID": "発注番号",
+      "PURCHASE_NUMBER": "工場発注番号",
+      "SUPPLIER_CODE": "@:{'LABEL.SUPPLIER_CODE'}",
+      "SUPPLIER_NAME": "@:{'LABEL.SUPPLIER_NAME'}"
+    },
+    "SUPPLIER_CODE": "仕入先コード",
+    "SUPPLIER_NAME": "仕入先名",
     "TO": "To",
     "UPDATED_AT": "変更日時",
     "UPDATED_BY": "変更者",
@@ -60,7 +84,8 @@
       "ROLE_ADMIN": "管理者",
       "ROLE_GUEST": "ゲスト",
       "ROLE_USER": "ユーザー"
-    }
+    },
+    "WIDTH": "幅"
   },
   "MENU": {
     "ADMIN": "管理",
@@ -68,7 +93,9 @@
     "LOCALES": "翻訳",
     "LOCALES_ID": "@:{'MENU.LOCALES'}-編集",
     "LOCALES_NEW": "@:{'MENU.LOCALES'}-新規作成",
+    "MATERIAL_STOCKS": "原材料在庫",
     "PERMISSIONS": "権限",
+    "PURCHASE_ORDERS": "発注",
     "USERS": "アカウント",
     "USERS_ID": "@:{'MENU.USERS'}-編集",
     "USERS_NEW": "@:{'MENU.USERS'}-新規作成"

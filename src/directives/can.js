@@ -1,5 +1,5 @@
 import { useUser } from '@/composables/useUser';
-import { guard } from '@/helpers';
+import { guard } from '@/helpers/guard';
 
 export default {
     mounted(el, binding) {

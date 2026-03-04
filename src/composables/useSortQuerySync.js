@@ -1,6 +1,6 @@
 import { useSort } from './useSort';
 
-export const useSortWithQuery = (sortData) => {
+export const useSortQuerySync = (sortData) => {
     const route = useRoute();
     const router = useRouter();
     const sort = useSort(sortData);
@@ -27,4 +27,4 @@ export const useSortWithQuery = (sortData) => {
     return sort;
 };
 
-export { useSortWithQuery as useSort };
+export { useSortQuerySync as useSort };

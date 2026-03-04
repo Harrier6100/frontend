@@ -1,8 +1,8 @@
-import { useFilter } from './useFilterWithQuery';
-import { useSort } from './useSortWithQuery';
-import { usePagination } from './usePaginationWithQuery';
+import { useFilter } from './useFilterQuerySync';
+import { useSort } from './useSortQuerySync';
+import { usePagination } from './usePaginationQuerySync';
 
-export const useDataTableWithQuery = (tableData, pageSize = 10) => {
+export const useDataTableQuerySync = (tableData, pageSize = 10) => {
     const { keyword, filteredData } = useFilter(tableData);
     const { sortedData, sortBy, orderBy } = useSort(filteredData);
     const { page, pageCount, paginatedData } = usePagination(sortedData, pageSize);
@@ -21,4 +21,4 @@ export const useDataTableWithQuery = (tableData, pageSize = 10) => {
     };
 };
 
-export { useDataTableWithQuery as useDataTable };
+export { useDataTableQuerySync as useDataTable };

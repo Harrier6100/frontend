@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useSession } from '@/composables/useSession';
 import { useUser } from '@/composables/useUser';
-import { guard } from '@/helpers';
+import { guard } from '@/helpers/guard';
 
 const routes = [];
 const modules = import.meta.glob('./routes/*', { eager: true });

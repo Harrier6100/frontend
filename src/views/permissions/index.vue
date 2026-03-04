@@ -5,13 +5,14 @@
     <table>
         <thead>
             <tr>
-                <Th>{{ t('LABEL.PERMISSIONS.ID') }}</Th>
-                <Th>{{ t('LABEL.PERMISSIONS.NAME') }}</Th>
-                <Th>{{ t('LABEL.IS_ACTIVE') }}</Th>
-                <Th>{{ t('LABEL.CREATED_AT') }}</Th>
-                <Th>{{ t('LABEL.CREATED_BY') }}</Th>
-                <Th>{{ t('LABEL.UPDATED_AT') }}</Th>
-                <Th>{{ t('LABEL.UPDATED_BY') }}</Th>
+                <Th sortKey="id" :orderBy="orderBy" @sort="sortBy">{{ t('LABEL.PERMISSIONS.ID') }}</Th>
+                <Th sortKey="name" :orderBy="orderBy" @sort="sortBy">{{ t('LABEL.PERMISSIONS.NAME') }}</Th>
+                <Th sortKey="isActive" :orderBy="orderBy" @sort="sortBy">{{ t('LABEL.IS_ACTIVE') }}</Th>
+                <Th sortKey="createdAt" :orderBy="orderBy" @sort="sortBy">{{ t('LABEL.CREATED_AT') }}</Th>
+                <Th sortKey="createdBy" :orderBy="orderBy" @sort="sortBy">{{ t('LABEL.CREATED_BY') }}</Th>
+                <Th sortKey="updatedAt" :orderBy="orderBy" @sort="sortBy">{{ t('LABEL.UPDATED_AT') }}</Th>
+                <Th sortKey="updatedBy" :orderBy="orderBy" @sort="sortBy">{{ t('LABEL.UPDATED_BY') }}</Th>
+                <Th></Th>
             </tr>
         </thead>
         <tbody>
@@ -36,9 +37,10 @@
 <script setup>
 import { useLoading } from '@/composables/useLoading';
 import { useQuery } from '@/composables/useQuery';
-import { useDataTable } from '@/composables/useDataTableWithQuery';
+import { useDataTable } from '@/composables/useDataTableQuerySync';
 import { permissionService } from '@/services';
-import { getDateTime, errorHandler } from '@/helpers';
+import { errorHandler } from '@/helpers/errorHandler';
+import { getDateTime } from '@/utils/dateTime';
 
 const route = useRoute();
 const router = useRouter();

@@ -3,7 +3,7 @@
     <Form @submit.prevent="onSave">
         <div>
             <Label>{{ t('LABEL.USERS.ID') }}</Label>
-            <Input v-model="form.id" />
+            <Input v-model="form.id" :readonly="!!id" />
             <Message :error="errors.id" />
         </div>
         <div>
@@ -63,7 +63,7 @@ import { useQuery } from '@/composables/useQuery';
 import { useModal } from '@/composables/useModal';
 import { useYup } from '@/composables/useYup';
 import { userService } from '@/services';
-import { errorHandler } from '@/helpers';
+import { errorHandler } from '@/helpers/errorHandler';
 
 const route = useRoute();
 const router = useRouter();

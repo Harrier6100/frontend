@@ -1,6 +1,6 @@
 import { usePagination } from './usePagination';
 
-export const usePaginationWithQuery = (paginationData, pageSize) => {
+export const usePaginationQuerySync = (paginationData, pageSize) => {
     const route = useRoute();
     const router = useRouter();
     const pagination = usePagination(paginationData, pageSize);
@@ -25,4 +25,4 @@ export const usePaginationWithQuery = (paginationData, pageSize) => {
     return pagination;
 };
 
-export { usePaginationWithQuery as usePagination };
+export { usePaginationQuerySync as usePagination };

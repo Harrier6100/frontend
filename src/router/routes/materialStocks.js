@@ -1,8 +1,8 @@
 export default [
     {
-        path: '/material-stocks',
+        path: '/material/stocks',
         name: 'MaterialStocks',
-        component: () => import('@/views/materialStocks.vue'),
+        component: () => import('@/views/MaterialStocks.vue'),
         meta: {
             requiresAuth: false,
         },

@@ -5,7 +5,7 @@
 
 <script setup>
 import { setLocale } from 'yup';
-import { yupLocale } from '@/helpers';
+import { yupLocale } from '@/helpers/yupLocale';
 
 const { locale, t } = useI18n();
 

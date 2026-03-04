@@ -4,7 +4,7 @@ import { setLocale } from 'yup';
 import App from '@/App.vue';
 import router from '@/router';
 import i18n from '@/i18n';
-import { yupLocale } from '@/helpers';
+import { yupLocale } from '@/helpers/yupLocale';
 import can from '@/directives/can';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'flag-icons/css/flag-icons.min.css';

@@ -28,7 +28,7 @@
 <script setup>
 import router from '@/router';
 import { useUser } from '@/composables/useUser';
-import { guard } from '@/helpers';
+import { guard } from '@/helpers/guard';
 import menuDefs from '@/config/menu';
 
 const props = defineProps({

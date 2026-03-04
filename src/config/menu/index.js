@@ -4,6 +4,14 @@ export default {
             label: 'MENU.ADMIN',
             routeNext: 'admin',
         },
+        {
+            label: 'MENU.STOCK',
+            routeNext: 'stock',
+        },
+        {
+            label: 'MENU.PURCHASE',
+            routeNext: 'purchase',
+        },
     ],
     admin: [
         {
@@ -17,6 +25,22 @@ export default {
         {
             label: 'MENU.USERS',
             routeName: 'Users',
+        },
+        {
+            label: 'MENU.MATERIALS',
+            routeName: 'Materials',
+        },
+    ],
+    stock: [
+        {
+            label: 'MENU.MATERIAL_STOCKS',
+            routeName: 'MaterialStocks',
+        },
+    ],
+    purchase: [
+        {
+            label: 'MENU.PURCHASE_ORDERS',
+            routeName: 'PurchaseOrders',
         },
     ],
 };

@@ -1,7 +1,7 @@
 import { debounce } from 'lodash';
 import { useFilter } from './useFilter';
 
-export const useFilterWithQuery = (filterData) => {
+export const useFilterQuerySync = (filterData) => {
     const route = useRoute();
     const router = useRouter();
     const filter = useFilter(filterData);
@@ -26,4 +26,4 @@ export const useFilterWithQuery = (filterData) => {
     return filter;
 };
 
-export { useFilterWithQuery as useFilter };
+export { useFilterQuerySync as useFilter };

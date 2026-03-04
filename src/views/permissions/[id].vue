@@ -3,7 +3,7 @@
     <Form @submit.prevent="onSave">
         <div>
             <Label>{{ t('LABEL.PERMISSIONS.ID') }}</Label>
-            <Input v-model="form.id" />
+            <Input v-model="form.id" :readonly="!!id" />
             <Message :error="errors.id" />
         </div>
         <div>
@@ -34,7 +34,7 @@ import { useSpinning } from '@/composables/useSpinning';
 import { useQuery } from '@/composables/useQuery';
 import { useYup } from '@/composables/useYup';
 import { permissionService } from '@/services';
-import { errorHandler } from '@/helpers';
+import { errorHandler } from '@/helpers/errorHandler';
 
 const route = useRoute();
 const router = useRouter();
