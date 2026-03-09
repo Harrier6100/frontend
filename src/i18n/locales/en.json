@@ -1,0 +1,108 @@
+{
+  "button": {
+    "back": "Back",
+    "close": "Close",
+    "close_x": "x",
+    "copy": "Copy",
+    "create_new": "Create New",
+    "delete": "Delete",
+    "edit": "Edit",
+    "login": "Login",
+    "logout": "Logout",
+    "no": "No",
+    "save": "Save",
+    "yes": "Yes"
+  },
+  "label": {
+    "create": "Create",
+    "created_at": "Created At",
+    "created_by": "Created By",
+    "delete": "Delete",
+    "is_active": "Active",
+    "is_active_false": "Inactive",
+    "is_active_true": "Active",
+    "read": "Read",
+    "remarks": "Remarks",
+    "update": "Update",
+    "updated_at": "Updated At",
+    "updated_by": "Updated By"
+  },
+  "menu": {
+    "admin": "Admin",
+    "home": "Home",
+    "permissions": "Permissions",
+    "permissions_id": "@:{'menu.permissions'}[Edit]",
+    "permissions_new": "@:{'menu.permissions'}[New]",
+    "translations": "Translations",
+    "translations_id": "@:{'menu.translations'}[Edit]",
+    "translations_new": "@:{'menu.translations'}[New]",
+    "users": "Users",
+    "users_id": "@:{'menu.users'}[Edit]",
+    "users_new": "@:{'menu.users'}[New]"
+  },
+  "permission": {
+    "permissions": {
+      "create": "@:{'menu.permissions'} @:{'label.create'}",
+      "delete": "@:{'menu.permissions'} @:{'label.delete'}",
+      "read": "@:{'menu.permissions'} @:{'label.read'}",
+      "update": "@:{'menu.permissions'} @:{'label.update'}"
+    },
+    "translations": {
+      "create": "@:{'menu.translations'} @:{'label.create'}",
+      "delete": "@:{'menu.translations'} @:{'label.delete'}",
+      "read": "@:{'menu.translations'} @:{'label.read'}",
+      "update": "@:{'menu.translations'} @:{'label.update'}"
+    },
+    "users": {
+      "create": "@:{'menu.users'} @:{'label.create'}",
+      "delete": "@:{'menu.users'} @:{'label.delete'}",
+      "read": "@:{'menu.users'} @:{'label.read'}",
+      "update": "@:{'menu.users'} @:{'label.update'}"
+    }
+  },
+  "permissions": {
+    "created_at": "@:{'label.created_at'}",
+    "created_by": "@:{'label.created_by'}",
+    "id": "Permission Key",
+    "is_active": "@:{'label.is_active'}",
+    "is_active_false": "@:{'label.is_active_false'}",
+    "is_active_true": "@:{'label.is_active_true'}",
+    "name": "Permission Name",
+    "remarks": "@:{'label.remarks'}",
+    "updated_at": "@:{'label.updated_at'}",
+    "updated_by": "@:{'label.updated_by'}"
+  },
+  "placeholder": {
+    "search": "Search"
+  },
+  "translations": {
+    "created_at": "@:{'label.created_at'}",
+    "created_by": "@:{'label.created_by'}",
+    "id": "Translation Key",
+    "translation": "Translation",
+    "updated_at": "@:{'label.updated_at'}",
+    "updated_by": "@:{'label.updated_by'}"
+  },
+  "users": {
+    "created_at": "@:{'label.created_at'}",
+    "created_by": "@:{'label.created_by'}",
+    "expiry_date": "Expiry Date",
+    "is_active": "@:{'label.is_active'}",
+    "is_active_false": "@:{'label.is_active_false'}",
+    "is_active_true": "@:{'label.is_active_true'}",
+    "language": "Language",
+    "language_en": "English",
+    "language_ja": "Japanese",
+    "permissions": "Permission Setting",
+    "remarks": "@:{'label.remarks'}",
+    "role": "Role",
+    "role_admin": "Admin",
+    "role_guest": "Guest",
+    "role_user": "User",
+    "updated_at": "@:{'label.updated_at'}",
+    "updated_by": "@:{'label.updated_by'}"
+  },
+  "yup": {
+    "required": "{ label } is required."
+  }
+}

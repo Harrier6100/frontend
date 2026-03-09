@@ -1,0 +1,114 @@
+{
+  "button": {
+    "back": "戻る",
+    "close": "閉じる",
+    "close_x": "x",
+    "copy": "複写",
+    "create_new": "新規作成",
+    "delete": "削除",
+    "edit": "編集",
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "no": "いいえ",
+    "save": "保存",
+    "yes": "はい"
+  },
+  "confirm": {
+    "delete": "削除しますか？",
+    "logout": "ログアウトしますか？"
+  },
+  "label": {
+    "create": "作成",
+    "created_at": "作成日時",
+    "created_by": "作成者",
+    "delete": "削除",
+    "is_active": "有効",
+    "is_active_false": "無効",
+    "is_active_true": "有効",
+    "read": "参照",
+    "remarks": "備考",
+    "update": "変更",
+    "updated_at": "更新日時",
+    "updated_by": "更新者"
+  },
+  "menu": {
+    "admin": "管理者",
+    "home": "ホーム",
+    "permissions": "権限マスタ",
+    "permissions_id": "@:{'menu.permissions'}[編集]",
+    "permissions_new": "@:{'menu.permissions'}[新規]",
+    "translations": "翻訳マスタ",
+    "translations_id": "@:{'menu.translations'}[編集]",
+    "translations_new": "@:{'menu.translations'}[新規]",
+    "users": "アカウント",
+    "users_id": "@:{'menu.users'}[編集]",
+    "users_new": "@:{'menu.users'}[新規]"
+  },
+  "permission": {
+    "permissions": {
+      "create": "@:{'menu.permissions'}@:{'label.create'}",
+      "delete": "@:{'menu.permissions'}@:{'label.delete'}",
+      "read": "@:{'menu.permissions'}@:{'label.read'}",
+      "update": "@:{'menu.permissions'}@:{'label.update'}"
+    },
+    "translations": {
+      "create": "@:{'menu.translations'}@:{'label.create'}",
+      "delete": "@:{'menu.translations'}@:{'label.delete'}",
+      "read": "@:{'menu.translations'}@:{'label.read'}",
+      "update": "@:{'menu.translations'}@:{'label.update'}"
+    },
+    "users": {
+      "create": "@:{'menu.users'}@:{'label.create'}",
+      "delete": "@:{'menu.users'}@:{'label.delete'}",
+      "read": "@:{'menu.users'}@:{'label.read'}",
+      "update": "@:{'menu.users'}@:{'label.update'}"
+    }
+  },
+  "permissions": {
+    "created_at": "@:{'label.created_at'}",
+    "created_by": "@:{'label.created_by'}",
+    "id": "権限キー",
+    "is_active": "@:{'label.is_active'}",
+    "is_active_false": "@:{'label.is_active_false'}",
+    "is_active_true": "@:{'label.is_active_true'}",
+    "name": "権限名",
+    "remarks": "@:{'label.remarks'}",
+    "updated_at": "@:{'label.updated_at'}",
+    "updated_by": "@:{'label.updated_by'}"
+  },
+  "placeholder": {
+    "search": "検索"
+  },
+  "translations": {
+    "created_at": "@:{'label.created_at'}",
+    "created_by": "@:{'label.created_by'}",
+    "id": "翻訳キー",
+    "translation": "翻訳",
+    "updated_at": "@:{'label.updated_at'}",
+    "updated_by": "@:{'label.updated_by'}"
+  },
+  "users": {
+    "created_at": "@:{'label.created_at'}",
+    "created_by": "@:{'label.created_by'}",
+    "expiry_date": "有効期限",
+    "id": "アカウント",
+    "is_active": "@:{'label.is_active'}",
+    "is_active_false": "@:{'label.is_active_false'}",
+    "is_active_true": "@:{'label.is_active_true'}",
+    "language": "言語",
+    "language_en": "英語",
+    "language_ja": "日本語",
+    "name": "アカウント名",
+    "permissions": "権限設定",
+    "remarks": "@:{'label.remarks'}",
+    "role": "ロール",
+    "role_admin": "管理者",
+    "role_guest": "ゲスト",
+    "role_user": "ユーザー",
+    "updated_at": "@:{'label.updated_at'}",
+    "updated_by": "@:{'label.updated_by'}"
+  },
+  "yup": {
+    "required": "{ label }は必須です。"
+  }
+}
