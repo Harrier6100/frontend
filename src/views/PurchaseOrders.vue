@@ -22,21 +22,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(row, index) of sortedData" :key="index">
-                <Td>{{ row.purchaseId }}</Td>
-                <Td>{{ row.purchaseNumber }}</Td>
-                <Td>{{ row.orderDate }}</Td>
-                <Td>{{ row.dueDate }}</Td>
-                <Td>{{ row.materialCode }}</Td>
-                <Td>{{ row.materialName }}</Td>
-                <Td>{{ row.materialWidth }}</Td>
-                <Td>{{ row.materialLength }}</Td>
-                <Td>{{ row.materialVolume }}</Td>
-                <Td>{{ row.orderQty }}</Td>
-                <Td>{{ row.orderQtyUom }}</Td>
-                <Td>{{ row.openQtyUom }}</Td>
-                <Td>{{ row.supplierCode }}</Td>
-                <Td>{{ row.supplierName }}</Td>
+            <tr v-for="(data, index) of sortedData" :key="index">
+                <Td>{{ data.purchaseId }}</Td>
+                <Td>{{ data.purchaseNumber }}</Td>
+                <Td>{{ data.orderDate }}</Td>
+                <Td>{{ data.dueDate }}</Td>
+                <Td>{{ data.materialCode }}</Td>
+                <Td>{{ data.materialName }}</Td>
+                <Td>{{ data.materialWidth }}</Td>
+                <Td>{{ data.materialLength }}</Td>
+                <Td>{{ data.materialVolume }}</Td>
+                <Td>{{ data.orderQty }}</Td>
+                <Td>{{ data.orderQtyUom }}</Td>
+                <Td>{{ data.openQtyUom }}</Td>
+                <Td>{{ data.supplierCode }}</Td>
+                <Td>{{ data.supplierName }}</Td>
             </tr>
         </tbody>
     </table>
@@ -44,7 +44,6 @@
 
 <script setup>
 import { purchaseOrderService } from '@/services/purchaseOrderService';
-import { errorHandler } from '@/helpers/errorHandler';
 import { useLoading } from '@/composables/useLoading';
 import { useSpinning } from '@/composables/useSpinning';
 import { useDataTable } from '@/composables/useDataTable';

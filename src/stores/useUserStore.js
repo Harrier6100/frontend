@@ -1,3 +1,4 @@
+import i18n from '@/i18n';
 import { userService } from '@/services/userService';
 
 export const useUserStore = defineStore('user', () => {
@@ -11,6 +12,7 @@ export const useUserStore = defineStore('user', () => {
 
     const get = async () => {
         user.value = await userService.getMe();
+        i18n.global.locale.value = user.value.language;
         sessionStorage.setItem('language', user.value.language);
     };
 

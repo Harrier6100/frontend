@@ -1,9 +1,9 @@
 <template>
-    <h4>{{ id ? t('menu.permissions_id') : t('menu.permissions_new') }}</h4>
+    <h4>{{ routeId ? t('menu.permissions_id') : t('menu.permissions_new') }}</h4>
     <Form @submit.prevent="onSave">
         <div>
             <Label>{{ t('permissions.id') }}</Label>
-            <Input v-model="form.id" :readonly="!!id" />
+            <Input v-model="form.id" :readonly="!!routeId" />
             <Message :error="errors.id" />
         </div>
         <div>
@@ -41,7 +41,7 @@ const { isLoading, execute } = useLoading();
 const { isSpinning, spin } = useSpinning();
 const { errors, runYup } = useYup();
 
-const { id } = route.params;
+const { id: routeId } = route.params;
 const form = reactive({
     id: '',
     name: '',
@@ -59,10 +59,10 @@ onMounted(async () => {
         const permission = await permissionService.get(route.query.id);
         Object.assign(form, permission);
     }
-    if (!id) return;
+    if (!routeId) return;
 
     await execute(async () => {
-        const data = await permissionService.get(id);
+        const data = await permissionService.get(routeId);
         Object.assign(form, data);
     });
 });
@@ -73,8 +73,8 @@ const onSave = async () => {
     try {
         await execute(async () => {
             await spin(async () => {
-                if (id) await permissionService.update(id, form);
-                if (!id) await permissionService.create(form);
+                if (routeId) await permissionService.update(routeId, form);
+                if (!routeId) await permissionService.create(form);
                 addToast(t('message.save'));
             });
         });

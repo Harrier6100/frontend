@@ -37,7 +37,6 @@
 
 <script setup>
 import { permissionService } from '@/services/permissionService';
-import { errorHandler } from '@/helpers/errorHandler';
 import { formatDateTime } from '@/utils/formatDateTime';
 import { useLoading } from '@/composables/useLoading';
 import { useDataTable } from '@/composables/useDataTableSync';

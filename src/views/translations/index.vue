@@ -35,7 +35,6 @@
 
 <script setup>
 import { translationService } from '@/services/translationService';
-import { errorHandler } from '@/helpers/errorHandler';
 import { formatDateTime } from '@/utils/formatDateTime';
 import { useLoading } from '@/composables/useLoading';
 import { useDataTable } from '@/composables/useDataTableSync';

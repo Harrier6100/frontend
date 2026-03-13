@@ -2,6 +2,6 @@ export default [
     {
         path: '/purchase-orders',
         name: 'PurchaseOrders',
-        component: () => import('@/views/host/PurchaseOrders.vue'),
+        component: () => import('@/views/PurchaseOrders.vue'),
     },
 ];

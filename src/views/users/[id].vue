@@ -1,9 +1,9 @@
 <template>
-    <h4>{{ id ? t('menu.users_id') : t('menu.users_new') }}</h4>
+    <h4>{{ routeId ? t('menu.users_id') : t('menu.users_new') }}</h4>
     <Form @submit.prevent="onSave">
         <div>
             <Label>{{ t('users.id') }}</Label>
-            <Input v-model="form.id" :readonly="!!id" />
+            <Input v-model="form.id" :readonly="!!routeId" />
             <Message :error="errors.id" />
         </div>
         <div>
@@ -77,7 +77,7 @@ const roles = [
     { value: 'guest', label: 'users.role_guest' },
 ];
 
-const { id } = route.params;
+const { id: routeId } = route.params;
 const form = reactive({
     id: '',
     name: '',
@@ -95,10 +95,10 @@ const schema = yup.object({
 });
 
 onMounted(async () => {
-    if (!id) return;
+    if (!routeId) return;
 
     await execute(async () => {
-        const data = await userService.get(id);
+        const data = await userService.get(routeId);
         Object.assign(form, data);
     });
 });
@@ -109,8 +109,8 @@ const onSave = async () => {
     try {
         await execute(async () => {
             await spin(async () => {
-                if (id) await userService.update(id, form);
-                if (!id) await userService.create(form);
+                if (routeId) await userService.update(routeId, form);
+                if (!routeId) await userService.create(form);
                 addToast(t('message.save'));
             });
         });

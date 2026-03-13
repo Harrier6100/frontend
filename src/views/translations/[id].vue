@@ -1,9 +1,9 @@
 <template>
-    <h4>{{ id ? t('menu.translations_id') : t('menu.translations_new') }}</h4>
+    <h4>{{ routeId ? t('menu.translations_id') : t('menu.translations_new') }}</h4>
     <Form @submit.prevent="onSave">
         <div>
             <Label>{{ t('translations.id') }}</Label>
-            <Input v-model="form.id" :readonly="!!id" />
+            <Input v-model="form.id" :readonly="!!routeId" />
             <Message :error="errors.id" />
         </div>
         <div>
@@ -41,7 +41,7 @@ const { isLoading, execute } = useLoading();
 const { isSpinning, spin } = useSpinning();
 const { errors, runYup } = useYup();
 
-const { id } = route.params;
+const { id: routeId } = route.params;
 const form = reactive({
     id: '',
     locales: {
@@ -59,10 +59,10 @@ onMounted(async () => {
         const translation = await translationService.get(route.query.id);
         Object.assign(form, translation);
     }
-    if (!id) return;
+    if (!routeId) return;
 
     await execute(async () => {
-        const data = await translationService.get(id);
+        const data = await translationService.get(routeId);
         Object.assign(form, data);
     });
 });
@@ -73,8 +73,8 @@ const onSave = async () => {
     try {
         await execute(async () => {
             await spin(async () => {
-                if (id) await translationService.update(id, form);
-                if (!id) await translationService.create(form);
+                if (routeId) await translationService.update(routeId, form);
+                if (!routeId) await translationService.create(form);
                 addToast(t('message.save'));
             });
         });
