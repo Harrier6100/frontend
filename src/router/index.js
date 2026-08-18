@@ -16,27 +16,20 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) => {
     const { isSessionReady, isLoggedIn, permissions, resumeSession } = useSession();
+    if (!isSessionReady.value) await resumeSession();
 
-    if (!isSessionReady.value) {
-        await resumeSession();
+    if (to.meta.requiresGuest) {
+        return isLoggedIn.value ? { path: '/' } : undefined;
     }
 
-    const result = canActivate(to.meta, {
-        isLoggedIn: isLoggedIn.value,
-        permissions: permissions.value,
-    });
+    if (!isLoggedIn.value) {
+        sessionStorage.setItem('redirect', to.fullPath);
+        return { path: '/login' };
+    }
 
-    if (!result.ok) {
-        if (result.reason === 'authenticated') {
-            return { path: '/' };
-        }
-        if (result.reason === 'unauthorized') {
-            sessionStorage.setItem('redirect', to.fullPath);
-            return { path: '/login' };
-        }
-        if (result.reason === 'forbidden') {
-            return { path: '/forbidden' };
-        }
+    const pass = canActivate(to.meta, { permissions: permissions.value });
+    if (!pass.ok && pass.reason === 'forbidden') {
+        return { path: '/forbidden' };
     }
 });
 

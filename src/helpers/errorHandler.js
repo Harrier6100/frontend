@@ -1,7 +1,13 @@
+import axios from 'axios';
+
 export const errorHandler = (err) => {
-    if (!err.isAxiosError) {
+    if (!axios.isAxiosError(err)) {
         console.error(err);
-        return;
+        return {
+            status: 0,
+            code: 'error.unknown',
+            message: err.message,
+        };
     }
 
     if (!err.response) {

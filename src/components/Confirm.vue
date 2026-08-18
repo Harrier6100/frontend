@@ -2,8 +2,8 @@
     <teleport to="body">
         <div v-if="isShow">
             {{ confirmMessage }}
-            <Button @click="confirmYes">{{ t('button.yes') }}</Button>
             <Button @click="confirmNo">{{ t('button.no') }}</Button>
+            <Button @click="confirmYes">{{ t('button.yes') }}</Button>
         </div>
     </teleport>
 </template>

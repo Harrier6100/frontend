@@ -57,14 +57,14 @@ const fetchUsers = async () => {
 
 const onCreate = () => {
     router.push({
-        name: 'Users[new]',
+        name: 'UsersCreate',
         query: { from: route.fullPath },
     });
 };
 
 const onEdit = (id) => {
     router.push({
-        name: 'Users[id]',
+        name: 'UsersUpdate',
         params: { id },
         query: { from: route.fullPath },
     });
@@ -72,7 +72,7 @@ const onEdit = (id) => {
 
 const onCopy = (id) => {
     router.push({
-        name: 'Users[new]',
+        name: 'UsersCreate',
         query: { id, from: route.fullPath },
     });
 };

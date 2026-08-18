@@ -3,7 +3,7 @@ import { createI18n } from 'vue-i18n';
 const modules = import.meta.glob('./locales/*', { eager: true });
 const messages = Object.fromEntries(
     Object.entries(modules).map(([module, message]) => {
-        const locale = module.replace(/^.*\|\.json$/g, '');
+        const locale = module.replace(/^.*\/|\.json$/g, '');
         return [locale, message.default];
     })
 );

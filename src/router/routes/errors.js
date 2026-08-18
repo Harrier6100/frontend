@@ -6,7 +6,7 @@ export default [
     },
     {
         path: '/:pathMatch(.*)*',
-        name: 'NotFound',
-        component: () => import('@/views/errors/NotFound.vue'),
+        name: 'Notfound',
+        component: () => import('@/views/errors/Notfound.vue'),
     },
 ];

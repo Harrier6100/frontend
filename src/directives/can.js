@@ -6,14 +6,8 @@ export default {
         const { permissions } = useSession();
 
         const pass = canActivate(
-            {
-                requiresAuth: true,
-                permission: binding.value,
-            },
-            {
-                isLoggedIn: true,
-                permissions: permissions.value,
-            },
+            { permission: binding.value },
+            { permissions: permissions.value }
         );
 
         if (!pass.ok) {

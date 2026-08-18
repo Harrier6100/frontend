@@ -8,7 +8,7 @@ const setNested = (obj, path, value) => {
     target[lastKey] = value;
 };
 
-export const loadLocaleMessages = async () => {
+export const fetchMessages = async () => {
     const locales = await localeService.getAll();
     const messages = {};
 

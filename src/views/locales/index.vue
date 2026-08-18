@@ -1,6 +1,6 @@
 <template>
     <Input v-model="keyword" />
-    <Button v-can="'users.create'" @click="onCreate">{{ t('button.create_new') }}</Button>
+    <Button v-can="'locales.create'" @click="onCreate">{{ t('button.create_new') }}</Button>
     <Table>
         <Thead>
             <Tr>
@@ -57,14 +57,14 @@ const fetchLocales = async () => {
 
 const onCreate = () => {
     router.push({
-        name: 'Locales[new]',
+        name: 'LocalesCreate',
         query: { from: route.fullPath },
     });
 };
 
 const onEdit = (id) => {
     router.push({
-        name: 'Locales[id]',
+        name: 'LocalesUpdate',
         params: { id },
         query: { from: route.fullPath },
     });
@@ -72,7 +72,7 @@ const onEdit = (id) => {
 
 const onCopy = (id) => {
     router.push({
-        name: 'Locales[new]',
+        name: 'LocalesCreate',
         query: { id, from: route.fullPath },
     });
 };

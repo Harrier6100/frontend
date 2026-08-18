@@ -1,32 +1,38 @@
 export default [
     {
         path: '/locales',
-        name: 'Locales',
-        component: () => import('@/views/locales/index.vue'),
+        component: () => import('@/components/View.vue'),
         meta: {
-            requiresAuth: true,
-            permission: 'locales.read',
             breadcrumb: 'locales.read.breadcrumb',
         },
-    },
-    {
-        path: '/locales/new',
-        name: 'Locales[new]',
-        component: () => import('@/views/locales/[id].vue'),
-        meta: {
-            requiresAuth: true,
-            permission: 'locales.create',
-            breadcrumb: 'locales.create.breadcrumb',
-        },
-    },
-    {
-        path: '/locales/:id',
-        name: 'Locales[id]',
-        component: () => import('@/views/locales/[id].vue'),
-        meta: {
-            requiresAuth: true,
-            permission: 'locales.update',
-            breadcrumb: 'locales.update.breadcrumb',
-        },
+        children: [
+            {
+                path: '',
+                name: 'Locales',
+                component: () => import('@/views/locales/index.vue'),
+                meta: {
+                    permission: 'locales.read',
+                    menu: { group: 'admin', label: 'menu.locales' },
+                },
+            },
+            {
+                path: 'new',
+                name: 'LocalesCreate',
+                component: () => import('@/views/locales/[id].vue'),
+                meta: {
+                    permission: 'locales.create',
+                    breadcrumb: 'locales.create.breadcrumb',
+                },
+            },
+            {
+                path: ':id',
+                name: 'LocalesUpdate',
+                component: () => import('@/views/locales/[id].vue'),
+                meta: {
+                    permission: 'locales.update',
+                    breadcrumb: 'locales.update.breadcrumb',
+                },
+            },
+        ],
     },
 ];
