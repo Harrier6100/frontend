@@ -1,24 +1,24 @@
 <template>
     <Form @submit.prevent="onSave">
         <div>
-            <Label>{{ t('label.users.id') }}</Label>
-            <Input v-model="form.id" />
+            <Label for="id">{{ t('label.users.id') }}</Label>
+            <Input v-model="form.id" id="id" />
             <Alert :error="errors.id" />
         </div>
         <div>
-            <Label>{{ t('label.users.name') }}</Label>
-            <Input v-model="form.name" />
+            <Label for="name">{{ t('label.users.name') }}</Label>
+            <Input v-model="form.name" id="name" />
             <Alert :error="errors.name" />
         </div>
         <div>
-            <Label>{{ t('label.users.language') }}</Label>
-            <Select v-model="form.language">
+            <Label for="language">{{ t('label.users.language') }}</Label>
+            <Select v-model="form.language" id="language" >
                 <option value="ja">{{ t('label.users.language_ja') }}</option>
             </Select>
         </div>
         <div>
-            <Label>{{ t('label.users.remarks') }}</Label>
-            <Text v-model="form.remarks"></Text>
+            <Label for="remarks">{{ t('label.users.remarks') }}</Label>
+            <Text v-model="form.remarks" id="remarks" ></Text>
         </div>
         <div>
             <Check v-model="form.isActive" id="isActive" />

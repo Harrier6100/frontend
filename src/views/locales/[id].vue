@@ -1,15 +1,15 @@
 <template>
     <Form @submit.prevent="onSave">
         <div>
-            <Label>{{ t('label.locales.id') }}</Label>
-            <Input v-model="form.id" />
+            <Label for="id">{{ t('label.locales.id') }}</Label>
+            <Input v-model="form.id" id="id" />
             <Alert :error="errors.id" />
         </div>
         <div>
-            <Label>{{ t('label.locales.translations') }}</Label>
+            <Label for="ja">{{ t('label.locales.translations') }}</Label>
             <div>
                 <span><i class="fi fi-jp"></i></span>
-                <Input v-model="form.translations.ja" />
+                <Input v-model="form.translations.ja" id="ja" />
             </div>
         </div>
         <Button v-can="'locales.delete'" v-if="id" @click="onDelete">{{ t('button.delete') }}</Button>
