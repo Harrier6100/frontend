@@ -55,7 +55,7 @@ const onSave = async () => {
             } else {
                 await localeService.create(form);
             }
-            addToast(t(routeId.value ? 'toast.updated' : 'toast.created', { resouce: t('') }));
+            addToast(t(routeId.value ? 'toast.updated' : 'toast.created', { resource: t('') }));
         });
     } catch (err) {
         const error = errorHandler(err);

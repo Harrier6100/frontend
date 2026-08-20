@@ -30,8 +30,6 @@ import { permissionService } from '@/services/permissionService';
 import { errorHandler } from '@/helpers/errorHandler';
 import { formatDateTime } from '@/helpers/formatDateTime';
 
-const route = useRoute();
-const router = useRouter();
 const { t } = useI18n();
 const { execute } = useAsync();
 const { addToast } = useToast();
