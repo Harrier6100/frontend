@@ -3,7 +3,7 @@ export default [
         path: '/roles',
         component: () => import('@/components/View.vue'),
         meta: {
-            breadcrumb: 'roles.read.breadcrumb',
+            breadcrumb: 'breadcrumb.roles.read',
         },
         children: [
             {
@@ -21,7 +21,7 @@ export default [
                 component: () => import('@/views/roles/[id].vue'),
                 meta: {
                     permission: 'roles.create',
-                    breadcrumb: 'roles.create.breadcrumb',
+                    breadcrumb: 'breadcrumb.roles.create',
                 },
             },
             {
@@ -30,7 +30,7 @@ export default [
                 component: () => import('@/views/roles/[id].vue'),
                 meta: {
                     permission: 'roles.update',
-                    breadcrumb: 'roles.update.breadcrumb',
+                    breadcrumb: 'breadcrumb.roles.update',
                 },
             },
         ],

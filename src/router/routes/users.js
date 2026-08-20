@@ -3,7 +3,7 @@ export default [
         path: '/users',
         component: () => import('@/components/View.vue'),
         meta: {
-            breadcrumb: 'users.read.breadcrumb',
+            breadcrumb: 'breadcrumb.users.read',
         },
         children: [
             {
@@ -21,7 +21,7 @@ export default [
                 component: () => import('@/views/users/[id].vue'),
                 meta: {
                     permission: 'users.create',
-                    breadcrumb: 'users.create.breadcrumb',
+                    breadcrumb: 'breadcrumb.users.create',
                 },
             },
             {
@@ -30,7 +30,7 @@ export default [
                 component: () => import('@/views/users/[id].vue'),
                 meta: {
                     permission: 'users.update',
-                    breadcrumb: 'users.update.breadcrumb',
+                    breadcrumb: 'breadcrumb.users.update',
                 },
             },
         ],

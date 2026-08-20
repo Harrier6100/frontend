@@ -3,7 +3,7 @@ export default [
         path: '/locales',
         component: () => import('@/components/View.vue'),
         meta: {
-            breadcrumb: 'locales.read.breadcrumb',
+            breadcrumb: 'breadcrumb.locales.read',
         },
         children: [
             {
@@ -21,7 +21,7 @@ export default [
                 component: () => import('@/views/locales/[id].vue'),
                 meta: {
                     permission: 'locales.create',
-                    breadcrumb: 'locales.create.breadcrumb',
+                    breadcrumb: 'breadcrumb.locales.create',
                 },
             },
             {
@@ -30,7 +30,7 @@ export default [
                 component: () => import('@/views/locales/[id].vue'),
                 meta: {
                     permission: 'locales.update',
-                    breadcrumb: 'locales.update.breadcrumb',
+                    breadcrumb: 'breadcrumb.locales.update',
                 },
             },
         ],

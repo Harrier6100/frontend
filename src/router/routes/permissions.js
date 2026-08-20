@@ -3,7 +3,7 @@ export default [
         path: '/permissions',
         component: () => import('@/components/View.vue'),
         meta: {
-            breadcrumb: 'permissions.read.breadcrumb',
+            breadcrumb: 'breadcrumb.permissions.read',
         },
         children: [
             {
