@@ -21,7 +21,7 @@ const breadcrumbs = computed(() => {
             path: i === arr.length - 1 ? route.path : r.path,
         }));
 
-    if (route.name === 'Home') return matched;
+    if (route.name === 'Login' || route.name === 'Home') return matched;
     return [{ label: t('menu.home'), path: '/' }, ...matched];
 });
 </script>

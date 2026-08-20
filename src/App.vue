@@ -4,4 +4,5 @@
     <router-view />
     <Confirm />
     <ToastContainer />
+    <Loading />
 </template>

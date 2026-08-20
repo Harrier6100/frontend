@@ -14,6 +14,10 @@ const router = createRouter({
     routes,
 });
 
+router.beforeEach(() => {
+    useLoading().start();
+});
+
 router.beforeEach(async (to, from) => {
     const { isSessionReady, isLoggedIn, permissions, resumeSession } = useSession();
     if (!isSessionReady.value) await resumeSession();
@@ -31,6 +35,14 @@ router.beforeEach(async (to, from) => {
     if (!pass.ok && pass.reason === 'forbidden') {
         return { path: '/forbidden' };
     }
+});
+
+router.afterEach(() => {
+    useLoading().stop();
+});
+
+router.onError(() => {
+    useLoading().stop();
 });
 
 export default router;
