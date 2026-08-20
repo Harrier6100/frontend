@@ -12,7 +12,7 @@
                 <Input v-model="form.translations.ja" id="ja" />
             </div>
         </div>
-        <Button v-can="'locales.delete'" v-if="id" @click="onDelete">{{ t('button.delete') }}</Button>
+        <Button v-if="routeId" v-can="'locales.delete'" @click="onDelete">{{ t('button.delete') }}</Button>
         <Button submit :spinning="isLoading">{{ t('button.save') }}</Button>
         <Button @click="onBack">{{ t('button.back') }}</Button>
     </Form>
@@ -31,7 +31,7 @@ const { confirm } = useConfirm();
 const { addToast } = useToast();
 const { errors, validate } = useValidation();
 
-const id = computed(() => route.params.id);
+const routeId = computed(() => route.params.id);
 const form = reactive({
     id: '',
     translations: {
@@ -44,29 +44,18 @@ const schema = yup.object({
         .required(() => t('validation.required', { field: t('label.locales.id') })),
 });
 
-const fetchLocale = async () => {
-    try {
-        const locale = await localeService.getById(id.value || route.query.id);
-        Object.assign(form, locale);
-    } catch (err) {
-        const error = errorHandler(err);
-        addToast(t(error.code));
-    }
-};
-
 const onSave = async () => {
     const ok = await validate(form, schema);
     if (!ok) return;
 
     try {
         await execute(async () => {
-            if (id.value) {
-                await localeService.update(id.value, form);
-                addToast(t('toast.updated', { resource: t('') }));
+            if (routeId.value) {
+                await localeService.update(routeId.value, form);
             } else {
                 await localeService.create(form);
-                addToast(t('toast.created', { resource: t('') }));
             }
+            addToast(t(routeId.value ? 'toast.updated' : 'toast.created', { resouce: t('') }));
         });
     } catch (err) {
         const error = errorHandler(err);
@@ -80,7 +69,7 @@ const onDelete = async () => {
 
     try {
         await execute(async () => {
-            await localeService.delete(id.value);
+            await localeService.delete(routeId.value);
             addToast(t('toast.deleted', { resource: t('') }));
         });
     } catch (err) {
@@ -95,9 +84,16 @@ const onBack = () => {
     });
 };
 
-onMounted(() => {
-    if (id.value || route.query.id) {
-        fetchLocale();
+onMounted(async () => {
+    const id = routeId.value || route.query.id;
+    if (id) {
+        try {
+            const locale = await localeService.getById(id);
+            Object.assign(form, locale);
+        } catch (err) {
+            const error = errorHandler(err);
+            addToast(t(error.code));
+        }
     }
 });
 </script>

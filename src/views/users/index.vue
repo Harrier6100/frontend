@@ -10,6 +10,7 @@
                 <Th :orderBy="orderBy" @sort="sortBy" sortKey="createdBy">{{ t('label.created_by') }}</Th>
                 <Th :orderBy="orderBy" @sort="sortBy" sortKey="updatedAt">{{ t('label.updated_at') }}</Th>
                 <Th :orderBy="orderBy" @sort="sortBy" sortKey="updatedBy">{{ t('label.updated_by') }}</Th>
+                <Th></Th>
             </Tr>
         </Thead>
         <Tbody>
@@ -44,17 +45,6 @@ const { addToast } = useToast();
 const users = ref([]);
 const { keyword, page, pageCount, items, sortBy, orderBy } = useDataTable(users);
 
-const fetchUsers = async () => {
-    try {
-        await execute(async () => {
-            users.value = await userService.getAll();
-        });
-    } catch (err) {
-        const error = errorHandler(err);
-        addToast(t(error.code));
-    }
-};
-
 const onCreate = () => {
     router.push({
         name: 'UsersCreate',
@@ -77,7 +67,14 @@ const onCopy = (id) => {
     });
 };
 
-onMounted(() => {
-    fetchUsers();
+onMounted(async () => {
+    try {
+        await execute(async () => {
+            users.value = await userService.getAll();
+        });
+    } catch (err) {
+        const error = errorHandler(err);
+        addToast(t(error.code));
+    }
 });
 </script>
