@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
         plugins: [
             vue(),
             AutoImport({
-                imports: ['vue', 'vue-router', 'vue-i18n', 'pinia', '@vueuse/core'],
+                imports: ['vue', 'vue-router', 'vue-i18n', 'pinia'],
                 dirs: ['src/composables'],
                 extensions: ['js'],
                 deep: true,
