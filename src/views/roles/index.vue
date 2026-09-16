@@ -36,9 +36,9 @@ import { roleService } from '@/services/roleService';
 import { errorHandler } from '@/helpers/errorHandler';
 import { formatDateTime } from '@/helpers/formatDateTime';
 
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const { t } = useI18n();
 const { execute } = useAsync();
 const { addToast } = useToast();
 

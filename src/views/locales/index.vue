@@ -36,9 +36,9 @@ import { localeService } from '@/services/localeService';
 import { errorHandler } from '@/helpers/errorHandler';
 import { formatDateTime } from '@/helpers/formatDateTime';
 
+const { t, locale: currentLocale } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const { t, locale: currentLocale } = useI18n();
 const { execute } = useAsync();
 const { addToast } = useToast();
 

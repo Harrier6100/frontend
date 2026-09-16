@@ -23,9 +23,9 @@ import * as yup from 'yup';
 import { localeService } from '@/services/localeService';
 import { errorHandler } from '@/helpers/errorHandler';
 
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const { t } = useI18n();
 const { isLoading, execute } = useAsync();
 const { confirm } = useConfirm();
 const { addToast } = useToast();

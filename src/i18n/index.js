@@ -26,17 +26,17 @@ const setNested = (obj, path, value) => {
 };
 
 export const initI18n = async () => {
-    const resources = await localeService.getAll();
+    const locales = await localeService.getAll();
 
     const messageMap = {};
-    resources.forEach((resource) => {
-        Object.entries(resource.translations).forEach(([locale, value]) => {
-            messageMap[locale] ??= {};
-            setNested(messageMap[locale], resource.id, value);
+    locales.forEach((locale) => {
+        Object.entries(locale.translations).forEach(([language, message]) => {
+            messageMap[language] ??= {};
+            setNested(messageMap[language], locale.id, message);
         });
     });
 
-    Object.entries(messageMap).forEach(([locale, translations]) => {
-        i18n.global.mergeLocaleMessage(locale, translations);
+    Object.entries(messageMap).forEach(([language, messages]) => {
+        i18n.global.mergeLocaleMessage(language, messages);
     });
 };

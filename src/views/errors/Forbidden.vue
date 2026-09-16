@@ -1,7 +1,3 @@
 <template>
-    {{ t('error.forbidden')}}
+    Forbidden
 </template>
-
-<script setup>
-const { t } = useI18n();
-</script>
