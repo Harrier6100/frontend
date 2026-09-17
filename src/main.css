@@ -1,2 +1,8 @@
+@import 'tailwindcss/theme.css' leyer(theme) prefix(tw);
+@import 'tailwindcss/utilities.css' prefix(tw);
+
+@layer bootstrap;
+@import 'bootstrap/dist/css/bootstrap.min.css' layer(bootstrap);
+
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 @import 'flag-icons/css/flag-icons.min.css';
