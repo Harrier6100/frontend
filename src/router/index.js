@@ -4,7 +4,7 @@ import errorRoutes from './routes/errors.js';
 
 const routes = [];
 const modules = import.meta.glob('./routes/*', { eager: true });
-Object.entries(modules).forEach((module) => routes.push(...module.default));
+Object.values(modules).forEach((module) => routes.push(...module.default));
 routes.push(...errorRoutes);
 
 const router = createRouter({
