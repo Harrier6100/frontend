@@ -4,9 +4,7 @@ import errorRoutes from './routes/errors.js';
 
 const routes = [];
 const modules = import.meta.glob('./routes/*', { eager: true });
-Object.entries(modules)
-    .filter(([path]) => !path.includes('/errors'))
-    .forEach(([, module]) => routes.push(...module.default));
+Object.entries(modules).forEach((module) => routes.push(...module.default));
 routes.push(...errorRoutes);
 
 const router = createRouter({
@@ -19,8 +17,8 @@ router.beforeEach(() => {
 });
 
 router.beforeEach(async (to, from) => {
-    const { isSessionReady, isLoggedIn, permissions, resumeSession } = useSession();
-    if (!isSessionReady.value) await resumeSession();
+    const { isLoggedIn, permissions, resumeSession } = useSession();
+    await resumeSession();
 
     if (to.meta.requiresGuest) {
         return isLoggedIn.value ? { path: '/' } : undefined;

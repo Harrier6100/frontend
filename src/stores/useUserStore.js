@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', () => {
     const name = computed(() => user.value?.name ?? '');
     const language = computed(() => user.value?.language ?? 'ja');
 
-    const get = async () => {
+    const fetch = async () => {
         user.value = await userService.getById('me');
         i18n.global.locale.value = language.value;
     };
@@ -21,7 +21,7 @@ export const useUserStore = defineStore('user', () => {
         id,
         name,
         language,
-        get,
+        fetch,
         clear,
     };
 });
