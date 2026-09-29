@@ -9,8 +9,8 @@ const api = axios.create({
 
 api.interceptors.request.use(
     (config) => {
-        const { token } = useSessionStore();
-        if (token) config.headers.Authorization = token;
+        const session = useSessionStore();
+        if (session.token) config.headers.Authorization = session.token;
         return config;
     },
     (error) => Promise.reject(error),
