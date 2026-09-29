@@ -5,7 +5,7 @@ import { useUserStore } from './useUserStore';
 export const useSessionStore = defineStore('session', () => {
     const token = ref(null);
     const isSessionReady = ref(false);
-    const userStore = useUserStore();
+    const user = useUserStore();
 
     const isLoggedIn = computed(() => {
         return !!token.value;
@@ -23,7 +23,7 @@ export const useSessionStore = defineStore('session', () => {
     const startSession = async (credentials) => {
         const { token: newToken } = await sessionService.startSession(credentials);
         token.value = newToken;
-        await userStore.fetch();
+        await user.fetch();
     };
 
     const resumeSession = async () => {
@@ -33,10 +33,10 @@ export const useSessionStore = defineStore('session', () => {
         try {
             const { token: newToken } = await sessionService.resumeSession();
             token.value = newToken;
-            await userStore.fetch();
+            await user.fetch();
         } catch (err) {
             token.value = null;
-            userStore.clear();
+            user.clear();
         }
     };
 
@@ -45,7 +45,7 @@ export const useSessionStore = defineStore('session', () => {
             await sessionService.endSession();
         } finally {
             token.value = null;
-            userStore.clear();
+            user.clear();
         }
     };
 
