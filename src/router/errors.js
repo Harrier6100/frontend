@@ -1,12 +1,12 @@
 export default [
     {
         path: '/forbidden',
-        name: 'Forbidden',
-        component: () => import('@/views/errors/Forbidden.vue'),
+        name: '403',
+        component: () => import('@/views/errors/403.vue'),
     },
     {
         path: '/:pathMatch(.*)*',
-        name: 'Notfound',
-        component: () => import('@/views/errors/Notfound.vue'),
+        name: '404',
+        component: () => import('@/views/errors/404.vue'),
     },
 ];

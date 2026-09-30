@@ -1,25 +1,25 @@
 export const useAsync = () => {
-    const isLoading = ref(false);
+    const isPending = ref(false);
 
-    const startLoading = () => {
-        isLoading.value = true;
+    const start = () => {
+        isPending.value = true;
     };
 
-    const stopLoading = () => {
-        isLoading.value = false;
+    const stop = () => {
+        isPending.value = false;
     };
 
     const execute = async (fn) => {
-        startLoading();
+        start();
         try {
             return await fn();
         } finally {
-            stopLoading();
+            stop();
         }
     };
 
     return {
-        isLoading,
+        isPending,
         execute,
     };
 };

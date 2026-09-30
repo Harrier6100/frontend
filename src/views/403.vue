@@ -1,3 +1,3 @@
 <template>
-    Notfound
+    Forbidden.
 </template>

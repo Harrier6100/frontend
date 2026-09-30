@@ -13,7 +13,7 @@
             </div>
         </div>
         <Button v-if="routeId" v-can="'locales.delete'" @click="onDelete">{{ t('button.delete') }}</Button>
-        <Button submit :spinning="isLoading">{{ t('button.save') }}</Button>
+        <Button submit :spinning="isPending">{{ t('button.save') }}</Button>
         <Button @click="onBack">{{ t('button.back') }}</Button>
     </Form>
 </template>
@@ -26,7 +26,7 @@ import { errorHandler } from '@/helpers/errorHandler';
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const { isLoading, execute } = useAsync();
+const { isPending, execute } = useAsync();
 const { confirm } = useConfirm();
 const { addToast } = useToast();
 const { errors, validate } = useValidation();

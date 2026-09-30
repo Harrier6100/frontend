@@ -10,7 +10,7 @@
             <Input v-model="form.password" type="password" id="password" />
             <Alert :error="errors.password" />
         </div>
-        <Button submit :spinning="isLoading">{{ t('button.login') }}</Button>
+        <Button submit :spinning="isPending">{{ t('button.login') }}</Button>
         <Alert :error="errors.form" />
     </Form>
 </template>
@@ -21,7 +21,7 @@ import { errorHandler } from '@/helpers/errorHandler';
 
 const router = useRouter();
 const { t } = useI18n();
-const { isLoading, execute } = useAsync();
+const { isPending, execute } = useAsync();
 const { startSession } = useSession();
 const { errors, validate } = useValidation();
 
